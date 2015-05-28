@@ -1,0 +1,19 @@
+<form prefix="0 http://vsb.leipert.io/ns 2 http://www.w3.org/2000/01"><legend>Person</legend>
+<div typeof="0:Person">
+<label>Label</label>
+<input name="2:Label" type="literal" >
+<label>Name</label>
+<input name="0:Name" type="literal" >
+<label>Birth Date</label>
+<input name="0:Birth Date" type="literal" placeholder="JJJJ-MM-DD">
+<label>Age</label>
+<input name="0:Age" type="literal" >
+<label>owns</label>
+<input name="0:owns" type="resource" value="0:Pet" >
+</div>
+<legend>Pet</legend>
+<div typeof="0:Pet">
+<label>Name</label>
+<input name="0:Name" type="literal" >
+</div>
+</form>
