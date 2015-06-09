@@ -40,7 +40,7 @@ if(isset($_POST,$_POST["json"])){
 # RDForm
 # sollte erst geladen werden wenn die Template Datei erstellt wurde
 
-require_once("lib/RDForm/loading.php");
+require_once("lib/loadingRDForm.php");
 $rdformloader=new rdformLoader();
 $rdformloader->load($sitegen);
 $sitegen->loadTemplate("templates/rdform.html","body");
