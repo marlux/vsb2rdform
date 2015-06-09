@@ -82,8 +82,15 @@ class rdfToRdform{
             $html.=" type=\"literal\" >\n";
             break;
         case "RELATION_PROPERTY":
-            $namespace=$this->getNamespaceKey($this->rdfController->rdfData[$property->linkTo]->uri);
-            $html.=" type=\"resource\" value=\"".$namespace.":".$property->linkTo."\" >\n";
+            if ($property->linkTo != null) {
+                $namespace=$this->getNamespaceKey($this->rdfController->rdfData[$property->linkTo]->uri);
+                $html.=" type=\"resource\" value=\"".$namespace.":".$property->linkTo."\">\n";
+            } else {
+                $namespace=$this->getNamespaceKey($property->uri);
+                $html.=" type=\"resource\" value=\"".$namespace.":".$property->alias."\" external >\n";
+            }
+
+
             break;
         case "DATE_PROPERTY":
             $html.=" type=\"literal\" placeholder=\"JJJJ-MM-DD\">\n";

@@ -8,6 +8,7 @@ class rdfController{
     public $rdfData;
     public $namespaces;
     public $rootClass;
+    public $namespacecounter=0;
 
     function rdfController(){
         $this->rdfData=array();
@@ -57,13 +58,15 @@ class rdfController{
         $this->namespaces = array();
 
         foreach($this->rdfData as $subject){
-            $this->namespaces[]=$this->getNamespacefromUri($subject->uri);
+            $this->namespaces["n" . $this->namespacecounter]=$this->getNamespacefromUri($subject->uri);
+            $this->namespacecounter++;
             
             foreach($subject->properties as $property){
                 $uri = $this->getNamespacefromUri($property->uri);
                 if($uri != "")
                 {
-                    $this->namespaces[]=$this->getNamespacefromUri($property->uri);
+                    $this->namespaces["n" . $this->namespacecounter]=$this->getNamespacefromUri($property->uri);
+                    $this->namespacecounter++;
                 }
             }
         }

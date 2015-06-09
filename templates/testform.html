@@ -1,19 +1,13 @@
-<form prefix="0 http://vsb.leipert.io/ns 2 http://www.w3.org/2000/01"><legend>Person</legend>
-<div typeof="0:Person">
-<label>Label</label>
-<input name="2:Label" type="literal" >
-<label>Name</label>
-<input name="0:Name" type="literal" >
-<label>Birth Date</label>
-<input name="0:Birth Date" type="literal" placeholder="JJJJ-MM-DD">
-<label>Age</label>
-<input name="0:Age" type="literal" >
-<label>owns</label>
-<input name="0:owns" type="resource" value="0:Pet" >
+<form prefix="n0 http://dbpedia.org/ontology"><legend>ArtificialSatellite</legend>
+<div typeof="n0:ArtificialSatellite">
+<label>city</label>
+<input name="n0:city" type="resource" value="n0:city" external >
+<label>beltwayCity</label>
+<input name="n0:beltwayCity" type="resource" value="n0:Capital">
 </div>
-<legend>Pet</legend>
-<div typeof="0:Pet">
-<label>Name</label>
-<input name="0:Name" type="literal" >
+<legend>Capital</legend>
+<div typeof="n0:Capital">
+<label>Anzahl der Landkreise</label>
+<input name="n0:Anzahl der Landkreise" type="literal" >
 </div>
 </form>
