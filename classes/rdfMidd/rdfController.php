@@ -14,7 +14,7 @@ class rdfController{
         $this->rdfData=array();
     }
  
-    function readJson($json, $rdfController){
+    function readJson($json){
         $data = json_decode($json);
         $this->cullSubjects($data);
         $this->getNamespaces();
@@ -22,12 +22,12 @@ class rdfController{
     }
 
 
-    function readJsonFromFile($file,$rdfController){
+    function readJsonFromFile($file){
         if(!is_file($file)){
             die("Datei existiert nicht");
         }
         $json = file_get_contents($file);
-        $this->readJson($json,$rdfController);
+        $this->readJson($json);
     }
 
     function cullSubjects($data)

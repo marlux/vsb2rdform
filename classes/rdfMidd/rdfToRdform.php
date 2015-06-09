@@ -19,7 +19,7 @@ class rdfToRdform{
         }
         $pre=trim($pre); 
 
-        $pre.="\">";        
+        $pre.="\">\n";        
         $inner="";
 
         foreach($this->rdfController->rdfData as $subject)
@@ -34,6 +34,14 @@ class rdfToRdform{
     function saveForm($filename)
     {
         file_put_contents($filename,$this->html);
+    }
+
+    function getNamespaceType($uri)
+    {
+        $revUri=strrev($uri);
+        $uri = explode("/",$revUri,2);
+        $uri = strrev($uri[0]);
+        return $uri;
     }
 
     function getNamespaceKey($uri)
@@ -53,7 +61,7 @@ class rdfToRdform{
     function genClass($subject)
     {
         $html="<legend>".$subject->alias."</legend>\n";
-        $html.="<div typeof=\"".$this->getNamespaceKey($subject->uri).":".$subject->alias."\">\n";
+        $html.="<div typeof=\"".$this->getNamespaceKey($subject->uri).":".$this->getNamespaceType($subject->uri)."\">\n";
 
         foreach($subject->properties as $property){
             if($property->type!="RELATION_PROPERTY"){
@@ -74,7 +82,7 @@ class rdfToRdform{
     function genProperty($property)
     {
         $html="<label>".$property->alias."</label>\n";
-        $html.="<input name=\"".$this->getNamespaceKey($property->uri).":".$property->alias."\"";
+        $html.="<input name=\"".$this->getNamespaceKey($property->uri).":".$this->getNamespaceType($property->uri)."\"";
 
         switch($property->type){
         case "STRING_PROPERTY":
@@ -87,7 +95,7 @@ class rdfToRdform{
                 $html.=" type=\"resource\" value=\"".$namespace.":".$property->linkTo."\">\n";
             } else {
                 $namespace=$this->getNamespaceKey($property->uri);
-                $html.=" type=\"resource\" value=\"".$namespace.":".$property->alias."\" external >\n";
+                $html.=" type=\"resource\" value=\"".$namespace.":".$this->getNamespaceType($property->uri)."\" external >\n";
             }
 
 

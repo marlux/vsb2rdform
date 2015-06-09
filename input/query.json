@@ -1,0 +1,73 @@
+{
+  "CONFIG": "DBPEDIA_CONFIG",
+  "START": {
+    "type": "LIST_ALL",
+    "linkTo": "ArtificialSatellite"
+  },
+  "SUBJECTS": [
+    {
+      "uri": "http://dbpedia.org/ontology/ArtificialSatellite",
+      "pos": {
+        "x": 490,
+        "y": 316
+      },
+      "view": true,
+      "alias": "ArtificialSatellite",
+      "properties": [
+        {
+          "uri": "http://dbpedia.org/ontology/city",
+          "type": "RELATION_PROPERTY",
+          "filterExists": true,
+          "hasFilter": false,
+          "compareRaw": {},
+          "linkTo": null,
+          "view": true,
+          "optional": false,
+          "arithmetic": null,
+          "compare": null,
+          "alias": "city"
+        },
+        {
+          "uri": "http://dbpedia.org/ontology/beltwayCity",
+          "type": "RELATION_PROPERTY",
+          "filterExists": true,
+          "hasFilter": true,
+          "compareRaw": {},
+          "linkTo": "Capital",
+          "view": true,
+          "optional": false,
+          "arithmetic": null,
+          "compare": null,
+          "alias": "beltwayCity"
+        }
+      ]
+    },
+    {
+      "uri": "http://dbpedia.org/ontology/Capital",
+      "pos": {
+        "x": 1066,
+        "y": 299
+      },
+      "view": true,
+      "alias": "Capital",
+      "properties": [
+        {
+          "uri": "http://dbpedia.org/ontology/numberOfCounties",
+          "type": "NUMBER_PROPERTY",
+          "filterExists": true,
+          "hasFilter": true,
+          "compareRaw": {
+            "numberArithmetic": "x*1000",
+            "numberComparison": "y>2"
+          },
+          "linkTo": null,
+          "view": true,
+          "optional": false,
+          "arithmetic": "%before_arithmetic%*1000",
+          "compare": "%after_arithmetic%>2",
+          "alias": "Anzahl der Landkreise"
+        }
+      ]
+    }
+  ]
+}

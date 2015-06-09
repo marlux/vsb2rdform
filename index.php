@@ -28,7 +28,7 @@ $bsloader->load($sitegen);
 if(isset($_POST,$_POST["json"])){
     require_once("classes/rdfMidd/rdfController.php");
     $rdfController= new rdfController();
-    $rdfController->readJson($_POST["json"],$rdfController);
+    $rdfController->readJson($_POST["json"]);
 
     # Json sollte nun eingelesen sein
     require_once("classes/rdfMidd/rdfToRdform.php"); 
