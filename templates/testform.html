@@ -1,13 +1,14 @@
-<form prefix="n0 http://dbpedia.org/ontology"><legend>ArtificialSatellite</legend>
+<form prefix="n0 http://dbpedia.org/ontology">
+<legend>ArtificialSatellite</legend>
 <div typeof="n0:ArtificialSatellite">
 <label>city</label>
-<input name="n0:city" type="resource" value="n0:city" external >
+<input name="n0:city" type="resource" value="n0:city" external subform="city">
 <label>beltwayCity</label>
-<input name="n0:beltwayCity" type="resource" value="n0:Capital">
+<input name="n0:beltwayCity" type="resource" value="n0:Capital" subform="beltwayCity" >
 </div>
 <legend>Capital</legend>
 <div typeof="n0:Capital">
 <label>Anzahl der Landkreise</label>
-<input name="n0:Anzahl der Landkreise" type="literal" >
+<input name="n0:numberOfCounties" type="literal" >
 </div>
 </form>

@@ -12,6 +12,8 @@ class rdfToRdform{
 
     public function genForm()
     {
+        $this->is_root_written=false;
+
         $pre = "<form prefix=\"";
 
         foreach($this->rdfController->namespaces as $key=>$namespace){
@@ -26,7 +28,6 @@ class rdfToRdform{
         {
             $inner.=$this->genclass($subject);
         }
-        
         $post= "</form>\n";
         $this->html=$pre . $inner . $post;
     }
@@ -92,10 +93,10 @@ class rdfToRdform{
         case "RELATION_PROPERTY":
             if ($property->linkTo != null) {
                 $namespace=$this->getNamespaceKey($this->rdfController->rdfData[$property->linkTo]->uri);
-                $html.=" type=\"resource\" value=\"".$namespace.":".$property->linkTo."\">\n";
+                $html.=" type=\"resource\" value=\"".$namespace.":".$property->linkTo."\" subform=\"".$property->alias."\" >\n";
             } else {
                 $namespace=$this->getNamespaceKey($property->uri);
-                $html.=" type=\"resource\" value=\"".$namespace.":".$this->getNamespaceType($property->uri)."\" external >\n";
+                $html.=" type=\"resource\" value=\"".$namespace.":".$this->getNamespaceType($property->uri)."\" external subform=\"".$property->alias."\">\n";
             }
 
 

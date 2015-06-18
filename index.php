@@ -2,8 +2,6 @@
 
 include("./config/config.inc.php");
 
-
-
 if($debug)
 {
     error_reporting(E_ALL | E_COMPILE_ERROR);
@@ -17,7 +15,14 @@ $sitegen = new sitegenerator();
 $sitegen->addHeadElement("<meta charset='utf-8'>");
 
 # JQuery
-$sitegen->addJavascript("js/jquery.js");
+require_once("lib/jquery/loading.php");
+$jqueryloader=new jQueryLoader();
+$jqueryloader->load($sitegen);
+
+# JQueryUI
+require_once("lib/jquery_ui/loading.php");
+$jqueryUIloader=new jQueryUILoader();
+$jqueryUIloader->load($sitegen);
 
 # Bootstrap
 require_once("lib/Bootstrap/loading.php");

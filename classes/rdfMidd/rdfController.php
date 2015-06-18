@@ -70,8 +70,11 @@ class rdfController{
                 }
             }
         }
-
         $this->namespaces=array_unique($this->namespaces,$sort_flags = SORT_STRING);
+
+        foreach($this->namespaces as $n) {
+            $n = $n . "/";
+        }
     }
 
     function getNamespacefromUri($uri)

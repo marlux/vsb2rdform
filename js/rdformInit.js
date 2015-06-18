@@ -1,8 +1,19 @@
+
+
+
 $(document).ready(function(){
     $(".rdform").RDForm({
         template: "templates/testform.html",
         submit: function() {
-            console.log( JSON.stringify(this, null, '\t') );
+
+            $.ajax({
+                url:'classes/ajax/json2turtle.php', 
+                data:{json: JSON.stringify(this,null,'\t')},
+                method:'POST',
+                success: function(result){
+                    alert(result);
+                }
+            });
         }
     });
 });
