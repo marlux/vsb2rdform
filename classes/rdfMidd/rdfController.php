@@ -55,6 +55,7 @@ class rdfController{
     }
 
     function getNamespaces(){
+        
         $this->namespaces = array();
 
         foreach($this->rdfData as $subject){
@@ -72,9 +73,8 @@ class rdfController{
         }
         $this->namespaces=array_unique($this->namespaces,$sort_flags = SORT_STRING);
 
-        foreach($this->namespaces as $n) {
-            $n = $n . "/";
-        }
+        $func = function($value) {return $value . "/"; };
+        $this->namespaces=array_map($func,$this->namespaces);
     }
 
     function getNamespacefromUri($uri)

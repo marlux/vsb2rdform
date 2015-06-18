@@ -56,7 +56,7 @@ class rdfToRdform{
         $revUri = strrev($uri);
         $uri    = explode("/",$revUri,2);
         $uri = strrev($uri[1]);
-        return $uri;
+        return $uri . "/";
     }
 
     function genClass($subject)
