@@ -39,10 +39,32 @@ class rdfToRdform{
 
     function getNamespaceType($uri)
     {
-        $revUri=strrev($uri);
-        $uri = explode("/",$revUri,2);
-        $uri = strrev($uri[0]);
-        return $uri;
+        return $this->splitnamespace($uri,0);
+    }
+
+    function splitnamespace($uri,$pos) {
+
+        $revUri = strrev($uri);
+        $seperator="";
+        for($i=0; $i<strlen($revUri); $i++) {
+            if($revUri[$i] == "/") {
+                $seperator="/";
+                break;            
+            }
+            if($revUri[$i] == "#") {
+                $seperator="#";
+                break;
+            }
+        }
+        $uri = explode($seperator,$revUri,2);
+        if($pos==1){
+            $uri = strrev($uri[1]);
+            return $uri . $seperator;
+        }
+        else {
+            $uri = strrev($uri[0]);
+            return $uri;
+        }
     }
 
     function getNamespaceKey($uri)
@@ -53,16 +75,13 @@ class rdfToRdform{
    
     function getNamespacefromUri($uri)
     {
-        $revUri = strrev($uri);
-        $uri    = explode("/",$revUri,2);
-        $uri = strrev($uri[1]);
-        return $uri . "/";
+        return $this->splitnamespace($uri,1);
     }
 
     function genClass($subject)
     {
         $html="<legend>".$subject->alias."</legend>\n";
-        $html.="<div typeof=\"".$this->getNamespaceKey($subject->uri).":".$this->getNamespaceType($subject->alias)."\">\n";
+        $html.="<div typeof=\"".$this->getNamespaceKey($subject->uri).":".$subject->alias."\">\n";
 
         foreach($subject->properties as $property){
             if($property->type!="RELATION_PROPERTY"){

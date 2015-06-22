@@ -72,20 +72,29 @@ class rdfController{
             }
         }
         $this->namespaces=array_unique($this->namespaces,$sort_flags = SORT_STRING);
-
-        $func = function($value) {return $value . "/"; };
-        $this->namespaces=array_map($func,$this->namespaces);
     }
 
     function getNamespacefromUri($uri)
     {
         $revUri = strrev($uri);
-        $uri    = explode("/",$revUri,2);
+        $seperator="";
+        for($i=0; $i<strlen($revUri); $i++) {
+            if($revUri[$i] == "/") {
+                $seperator="/";
+                break;            
+            }
+            if($revUri[$i] == "#") {
+                $seperator="#";
+                break;
+            }
+        }
+ 
+        $uri    = explode($seperator,$revUri,2);
         $uri = strrev($uri[1]);
-        return $uri;
+        return $uri . $seperator;
     }
 
     function getRootClass($data){
         $this->rootClass=$data->START->linkTo;
     }
-}
+    }
