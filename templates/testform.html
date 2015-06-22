@@ -1,14 +1,20 @@
-<form prefix="n0 http://dbpedia.org/ontology/">
-<legend>ArtificialSatellite</legend>
-<div typeof="n0:ArtificialSatellite">
-<label>city</label>
-<input name="n0:city" type="resource" value="n0:city" external subform="city">
-<label>beltwayCity</label>
-<input name="n0:beltwayCity" type="resource" value="n0:Capital" subform="beltwayCity" >
+<form prefix="n0 http://vsb.leipert.io/ns/ n2 http://www.w3.org/2000/01/">
+<legend>Person</legend>
+<div typeof="n0:Person">
+<label>Label</label>
+<input name="n2:rdf-schema#label" type="literal" >
+<label>Name</label>
+<input name="n0:name" type="literal" >
+<label>Birth Date</label>
+<input name="n0:birthDate" type="literal" placeholder="JJJJ-MM-DD">
+<label>Age</label>
+<input name="n0:age" type="literal" >
+<label>owns</label>
+<input name="n0:keeps" type="resource" value="n0:Pet"  >
 </div>
-<legend>Capital</legend>
-<div typeof="n0:Capital">
-<label>Anzahl der Landkreise</label>
-<input name="n0:numberOfCounties" type="literal" >
+<legend>Pet</legend>
+<div typeof="n0:Pet">
+<label>Name</label>
+<input name="n0:name" type="literal" >
 </div>
 </form>

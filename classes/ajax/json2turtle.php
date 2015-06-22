@@ -2,7 +2,7 @@
 
 $turtle="";
 
-$turtle="@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . \n\n";
+$turtle="@prefix rdf: \<http://www.w3.org/1999/02/22-rdf-syntax-ns#\> . \n\n";
 
 if(isset($_POST["json"])) {
     $json = json_decode($_POST["json"]);
