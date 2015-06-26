@@ -81,7 +81,7 @@ class rdfToRdform{
     function genClass($subject)
     {
         $html="<legend>".$subject->alias."</legend>\n";
-        $html.="<div typeof=\"".$this->getNamespaceKey($subject->uri).":".$subject->alias."\">\n";
+        $html.="<div typeof=\"".$this->getNamespaceKey($subject->uri).":".$this->getNamespaceType($subject->uri)."\"  id=\"$subject->alias\">\n";
 
         foreach($subject->properties as $property){
             if($property->type!="RELATION_PROPERTY"){
@@ -110,12 +110,15 @@ class rdfToRdform{
             $html.=" type=\"literal\" >\n";
             break;
         case "RELATION_PROPERTY":
+
+            $html.=" type=\"resource\" ";
+
             if ($property->linkTo != null) {
                 $namespace=$this->getNamespaceKey($this->rdfController->rdfData[$property->linkTo]->uri);
-                $html.=" type=\"resource\" value=\"".$namespace.":".$property->linkTo."\"  >\n";
+                $html.=" value=\"$property->linkTo\"  >\n";
             } else {
                 $namespace=$this->getNamespaceKey($property->uri);
-                $html.=" type=\"resource\" value=\"".$namespace.":".$this->getNamespaceType($property->uri)."\" external>\n";
+                $html.=" value=\"".$namespace.":".$this->getNamespaceType($property->uri)."\" external>\n";
             }
 
 

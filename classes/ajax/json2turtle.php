@@ -33,18 +33,18 @@ require("../../config/rdf_config.inc.php");
 
             if($key=="@type"){
                 foreach($elem as $type){
-                    $turtle.= "$prefix rdf:type &lt;$type&gt; ;\n";
+                    $turtle.= "$prefix rdf:type &lt;$type&gt; .\n";
                 }
                 continue;
             }
 
             if($key=="@value") {
-                $turtle.= "$parent rdf:value \"$elem\" ;\n";
+                $turtle.= "$parent rdf:value \"$elem\" .\n";
                 continue;
             }
 
             if($parent!="" and $subject!="") {
-                $turtle.= "$parent $subject $prefix ;\n";
+                $turtle.= "$parent &lt;$subject&gt; $prefix .\n";
             }
             
             $turtle=object2turtle($elem,$key,$prefix,$turtle);              
