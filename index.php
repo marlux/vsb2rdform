@@ -36,10 +36,11 @@ if(isset($_POST,$_POST["json"])){
     $rdfController->readJson($_POST["json"]);
 
     # Json sollte nun eingelesen sein
+    # Hier wird zurzeit das Ausgabeformat bestimmt 
     require_once("classes/rdfMidd/rdfToRdform.php"); 
     $rdfToRdform = new rdfToRdform($rdfController);
     $rdfToRdform->genForm();
-    $rdfToRdform->saveForm("templates/testform.html");
+    $rdfToRdform->saveForm($rdftemplate);
 }
 
 # RDForm

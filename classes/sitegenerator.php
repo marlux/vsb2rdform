@@ -20,21 +20,25 @@ class sitegenerator{
         $this->addHeadElement("<script type=\"text/javascript\" src=\"$file\"></script>");
     }
 
+    # Fügt eine CSS File in den HEAD hinzu
     function addCss($file)
     {
         $this->addHeadElement("<link href=\"$file\" rel=\"stylesheet\">");
     }
-
+    
+    # Fügt ein allgemeines Element in den HEAD hinzu
     function addHeadElement($element)
     {
         $this->head[]=$element;
     }
-
+    
+    # Fügt ein allgemeines Element in den Body hinzu
     function addBodyElement($element)
     {
         $this->body[]=$element;
     }
-
+    
+    # Gibt die aktuelle generierte Seite aus
     function plotPage()
     {
         echo "<!DOCTYPE HTML>\n";
@@ -44,6 +48,7 @@ class sitegenerator{
         echo "</html>\n";
     }
 
+    # Gibt den Head aus
     function plotHead()
     {
         echo "<head> \n";
@@ -54,6 +59,7 @@ class sitegenerator{
         echo "</head> \n";
     }
 
+    # Gibt den Body aus
     function plotBody()
     {
         echo "<body> \n";
@@ -64,6 +70,7 @@ class sitegenerator{
         echo "</body> \n";
     }
 
+    # Lädt ein Templateteil aus einer File und fügt es in den HEAD oder BODY ein
     function loadTemplate($file,$pos="body")
     {
         $template = file_get_contents($file);

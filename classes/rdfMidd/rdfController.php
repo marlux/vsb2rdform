@@ -3,17 +3,20 @@
 require_once("classes/rdfMidd/rdfProperty.php");
 require_once("classes/rdfMidd/rdfSubject.php");
 
+# Hält die RDF Daten in einer internen Datenstruktur
 class rdfController{
 
     public $rdfData;
     public $namespaces;
     public $rootClass;
     public $namespacecounter=0;
-
+    
+    # Konstruktor
     function rdfController(){
         $this->rdfData=array();
     }
- 
+    
+    # Ließ ein JSONobjekt ein
     function readJson($json){
         $data = json_decode($json);
         $this->cullSubjects($data);
@@ -21,7 +24,7 @@ class rdfController{
         $this->getRootClass($data);
     }
 
-
+    # Ließt eine JSON Datei ein
     function readJsonFromFile($file){
         if(!is_file($file)){
             die("Datei existiert nicht");
@@ -30,6 +33,7 @@ class rdfController{
         $this->readJson($json);
     }
 
+    # Verarbeite alles Subjekte
     function cullSubjects($data)
     {
         foreach($data->SUBJECTS as $subject){
@@ -53,7 +57,8 @@ class rdfController{
             $sub->properties[]=$prop;
         }
     }
-
+    
+    # Verarbeite alle Properties eines Subjects
     function getNamespaces(){
         
         $this->namespaces = array();
@@ -74,6 +79,7 @@ class rdfController{
         $this->namespaces=array_unique($this->namespaces,$sort_flags = SORT_STRING);
     }
 
+    # Holt sich den Namespace aus einer URI herraus
     function getNamespacefromUri($uri)
     {
         $revUri = strrev($uri);
@@ -94,6 +100,7 @@ class rdfController{
         return $uri . $seperator;
     }
 
+    // Holt sich die Wurzelklasse
     function getRootClass($data){
         $this->rootClass=$data->START->linkTo;
     }

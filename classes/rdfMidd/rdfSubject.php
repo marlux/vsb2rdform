@@ -1,5 +1,6 @@
 <?php
 
+# Beschreibt ein RDF Subject
 class rdfSubject{
 
     public $alias;
