@@ -23,11 +23,14 @@ require("../../config/rdf_config.inc.php");
 
         $object_array= (array) $object;
         $prefix="";
-        $subject=$subject;
         foreach($object_array as $key =>$elem){
 
             if($key=="@id"){
-                $prefix="&lt;". $baseURL . $elem ."&gt;";
+                if($parent != "" and $subject != "") {
+                    $turtle.= "$parent &lt;$subject&gt; &lt;$elem&gt; .\n";
+                }
+    
+                $prefix="&lt;". $baseURL . $elem ."&gt; ";
                 continue;
             }
 
@@ -44,6 +47,7 @@ require("../../config/rdf_config.inc.php");
             }
 
             if($parent!="" and $subject!="") {
+               
                 $turtle.= "$parent &lt;$subject&gt; $prefix .\n";
             }
             

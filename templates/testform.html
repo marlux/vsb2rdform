@@ -1,17 +1,7 @@
-<form prefix="n0 http://vsb.leipert.io/ns/">
-<legend>Grandchild</legend>
-<div typeof="n0:Person"  id="Grandchild">
-<label>Ancestor</label>
-<input name="n0:ancestor" type="resource"  value="Parent"  >
-</div>
-<legend>Parent</legend>
-<div typeof="n0:Person"  id="Parent">
-<label>Ancestor</label>
-<input name="n0:ancestor" type="resource"  value="Grandparent"  >
-</div>
-<legend>Grandparent</legend>
-<div typeof="n0:Person"  id="Grandparent">
-<label>Age</label>
-<input name="n0:age" type="literal" >
+<form prefix="n0 http://vocab.ub.uni-leipzig.de/amsl/">
+<legend>Annual Contract Data</legend>
+<div typeof="n0:AnnualContractData"  id="Annual Contract Data">
+<label>Balance File</label>
+<input name="n0:balanceFile" type="resource"  value="n0:balanceFile" external>
 </div>
 </form>
