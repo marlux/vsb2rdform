@@ -96,7 +96,7 @@ class rdfToRdform{
     function genClass($subject)
     {
         $html="<legend>".$subject->alias."</legend>\n";
-        $html.="<div typeof=\"".$this->getNamespaceKey($subject->uri).":".$this->getNamespaceType($subject->uri)."\"  id=\"$subject->alias\">\n";
+        $html.="<div typeof=\"".$this->getNamespaceKey($subject->uri).":".$this->getNamespaceType($subject->uri)."\"  id=\"$subject->alias\" resource=\"$subject->alias\">\n";
         
         # Erzeugt alle Properties die keine Relationen sind
         foreach($subject->properties as $property){

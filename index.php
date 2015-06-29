@@ -1,6 +1,7 @@
 <?php
 
 include("./config/config.inc.php");
+include("./config/rdf_config.inc.php");
 
 if($debug)
 {
